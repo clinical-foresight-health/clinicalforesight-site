@@ -352,7 +352,7 @@ HOME = f"""
         <p class="founder__quote">Clinically consequential details and documentation opportunities get missed, even by experienced clinicians, when the information is dispersed across the record. Bring another layer of clinical intelligence into the moment the physician reviews the patient and finalizes the note.</p>
         <div class="founder__name">
           <strong>Dr. Daniel Francis</strong>
-          <span class="small">Physician-Founder · 28 years in medicine, 17 in hospital medicine</span>
+          <span class="small">Physician-Founder · 28 years in medicine, 15 in hospital medicine</span>
         </div>
         <a class="btn btn--ghost" href="about.html">Read the founder story {ARROW}</a>
       </div>
@@ -752,7 +752,7 @@ ABOUT = f"""
       <div class="stack stack--lg reveal" data-delay="1">
         <p class="eyebrow">Physician-founder</p>
         <h2>Built from the bedside outward.</h2>
-        <p class="lede">Clinical Foresight was created by Dr. Daniel Francis, a practicing physician with 28 years of clinical experience, including 17 years in hospital medicine.</p>
+        <p class="lede">Clinical Foresight was created by Dr. Daniel Francis, a practicing physician with 28 years of clinical experience, including 15 years in hospital medicine.</p>
         <p>The platform grew from a physician-developed AI Hospitalist workflow refined through daily clinical practice. Dr. Francis recognized that increasingly complex electronic medical records often contain clinically important findings that can be overlooked amid the demands of inpatient medicine, and his work demonstrated the practical value of incorporating advanced AI into everyday clinical reasoning, chart review, and documentation.</p>
         <p>Clinical Foresight is the effort to transform that physician-developed approach into an integrated hospital technology platform.</p>
         <p class="founder__quote">This is technology shaped by the realities of practicing medicine, not software designed around hospital administrative processes.</p>
