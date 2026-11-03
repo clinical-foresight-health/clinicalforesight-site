@@ -16,6 +16,25 @@ NAV = [
     ("contact.html", "Partnerships"),
 ]
 
+# NVIDIA Inception program membership (accepted Nov 2026).
+# Naming per NVIDIA guidelines: "NVIDIA Inception Program" in titles/headlines,
+# "NVIDIA Inception program" (lowercase p) in sentences; never abbreviated.
+NEWS_PAGE = "news-nvidia-inception.html"
+BADGE = '<img src="assets/nvidia-inception-badge.svg" alt="NVIDIA Inception Program member badge" width="500" height="216">'
+NVIDIA_LEGAL = "&copy; 2026 NVIDIA, the NVIDIA logo, and NVIDIA Inception are trademarks and/or registered trademarks of NVIDIA Corporation in the U.S. and other countries."
+
+# Announcement ribbon shown above the header on every page; set ANNOUNCE = "" to retire it.
+ANNOUNCE = f"""<div class="announce" id="announce" role="region" aria-label="Announcement">
+  <div class="container">
+    <div class="announce__inner">
+      <span class="announce__text">Clinical Foresight AI, Inc. is now a member of the NVIDIA Inception program.</span>
+      <a href="{NEWS_PAGE}">Read the announcement</a>
+      <button class="announce__close" type="button" aria-label="Dismiss announcement" data-dismiss="announce">&times;</button>
+    </div>
+  </div>
+</div>
+"""
+
 MARK = """<svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" fill="none">
   <rect x="1.5" y="1.5" width="29" height="29" rx="8" stroke="currentColor" stroke-width="1.5"/>
   <path d="M8 19 L12 13 L15.5 17 L19 10 L24 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -54,7 +73,7 @@ def head(title, desc, path, dark=False):
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="header{' header--dark' if dark else ''}">
+{'' if path == NEWS_PAGE else ANNOUNCE}<header class="header{' header--dark' if dark else ''}">
   <div class="container">
     <nav class="nav" aria-label="Primary">
       <a class="brand" href="index.html" aria-label="Clinical Foresight home">{MARK}<span>Clinical Foresight</span></a>
@@ -84,6 +103,10 @@ FOOTER = f"""</main>
         <a class="brand" href="index.html">{MARK}<span>Clinical Foresight</span></a>
         <p class="footer__tag">Better Clinical Decisions. Better Documentation. Better Patient Care.</p>
         <p class="small" style="color:rgba(255,255,255,0.55)">Physician-founded healthcare AI for clinical decision support, patient safety, and Clinical Documentation Integrity.</p>
+        <div class="footer__member">
+          <a class="badge-field" href="{NEWS_PAGE}" aria-label="Clinical Foresight AI, Inc. is a member of the NVIDIA Inception program. Read the announcement.">{BADGE}</a>
+          <span class="small">Member, NVIDIA Inception program</span>
+        </div>
       </div>
       <div>
         <h4>Platform</h4>
@@ -98,6 +121,7 @@ FOOTER = f"""</main>
         <ul>
           <li><a href="about.html">Our vision</a></li>
           <li><a href="about.html#founder">Physician-founder</a></li>
+          <li><a href="{NEWS_PAGE}">News</a></li>
           <li><a href="contact.html">Partnerships</a></li>
         </ul>
       </div>
@@ -111,8 +135,9 @@ FOOTER = f"""</main>
       </div>
     </div>
     <p class="footer__legal">Clinical Foresight is under active development. Descriptions of planned integrations, automated query transmission, coding, and revenue-cycle workflows are forward-looking and subject to validation, institutional authorization, and regulatory requirements. The platform is not yet deployed in production hospital or EHR environments, and no claim of clinical efficacy or financial outcome is made. All interface examples use synthetic data; no patient information is shown. Clinical judgment, treatment decisions, and final documentation remain the responsibility of the treating physician.</p>
+    <p class="nvidia-legal">{NVIDIA_LEGAL}</p>
     <div class="footer__bottom">
-      <span>&copy; <span id="year">2026</span> Clinical Foresight. All rights reserved.</span>
+      <span>&copy; <span id="year">2026</span> Clinical Foresight AI, Inc. All rights reserved.</span>
       <span>clinicalforesight.ai</span>
     </div>
   </div>
@@ -255,6 +280,33 @@ HOME = f"""
         <span class="card__more">See the automation pathway {ARROW}</span>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- RECOGNITION: NVIDIA Inception program membership -->
+<section class="section" id="nvidia-inception" aria-labelledby="recognition-h">
+  <div class="container">
+    <div class="recognition">
+      <div class="recognition__badge reveal">
+        <div class="badge-field">{BADGE}</div>
+        <span class="mono" style="color:var(--mute)">MEMBER SINCE NOVEMBER 2026</span>
+      </div>
+      <div class="stack stack--lg reveal" data-delay="1">
+        <p class="eyebrow">Recognition</p>
+        <h2 id="recognition-h">Clinical Foresight AI, Inc. has joined the NVIDIA Inception program.</h2>
+        <p class="lede">NVIDIA Inception supports startups building with AI. Membership connects our work on the AI Hospitalist and Autonomous CDI platforms with NVIDIA's technical expertise, developer resources, and startup ecosystem as we move from prototype toward pilot.</p>
+        <ul class="recognition__points">
+          <li><strong>Technical access</strong><span>NVIDIA engineering guidance and developer tools for accelerated clinical inference.</span></li>
+          <li><strong>Validation</strong><span>A physician-founded company reviewed and accepted into NVIDIA's global AI startup program.</span></li>
+          <li><strong>Ecosystem</strong><span>Connection to NVIDIA's healthcare and life-sciences community of startups and partners.</span></li>
+        </ul>
+        <div class="recognition__actions">
+          <a class="btn btn--primary" href="{NEWS_PAGE}">Read the announcement {ARROW}</a>
+          <a class="link" href="contact.html">Explore a Partnership {ARROW}</a>
+        </div>
+      </div>
+    </div>
+    <p class="nvidia-legal">{NVIDIA_LEGAL}</p>
   </div>
 </section>
 
@@ -892,6 +944,79 @@ CONTACT = f"""
 """
 
 
+# --------------------------------------------------------------------------
+# NEWS: NVIDIA Inception announcement
+# --------------------------------------------------------------------------
+NEWS_NVIDIA = f"""
+<section class="page-hero band">
+  <div class="container">
+    <div class="page-hero__inner">
+      <p class="eyebrow">Announcement · November 2026 · Cherry Hill, N.J.</p>
+      <h1>Clinical Foresight AI, Inc. joins the NVIDIA Inception program</h1>
+      <p class="lede">Physician-founded healthcare AI company accepted into NVIDIA's program for startups building with AI, supporting development of its AI Hospitalist and Autonomous CDI platforms.</p>
+      <div class="article-hero__badge">
+        <div class="badge-field">{BADGE}</div>
+        <span>Member, NVIDIA Inception program</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <article class="article">
+      <p><span class="article__dateline">CHERRY HILL, N.J. — November 3, 2026</span> — Clinical Foresight AI, Inc., a physician-founded company developing AI-driven clinical decision support and Clinical Documentation Integrity (CDI) technology for hospitals, today announced that it has been accepted into the NVIDIA Inception program.</p>
+
+      <p>NVIDIA Inception supports startups that are transforming industries with AI and accelerated computing. Membership gives Clinical Foresight access to NVIDIA's technical expertise, developer resources, and startup ecosystem as the company advances its two products: the <a href="ai-hospitalist.html">AI Hospitalist + Prospective CDI</a>, a physician-facing assistant that surfaces unrecognized clinical findings and documentation gaps while the patient is still in the hospital, and <a href="autonomous-cdi.html">Autonomous Retrospective CDI</a>, a phased automation path for CDI teams.</p>
+
+      <blockquote class="article__quote">
+        <p>“Hospitals don't have a data problem; they have a noticing problem. The signal is usually in the chart, it just isn't seen in time. Joining NVIDIA Inception gives us the technical backing to build inference that is fast enough, and reliable enough, to change that on a working hospital floor.”</p>
+        <cite>Daniel L. Francis, DO — Founder, Clinical Foresight AI, Inc.</cite>
+      </blockquote>
+
+      <p>Clinical Foresight is led by a practicing hospitalist with 15 years in hospital medicine and a background in utilization management and CDI program leadership. The company's platforms are currently in development, with prototype integration against an EHR sandbox environment. No system is deployed in production patient care at this time.</p>
+
+      <p>Health systems, CDI leaders, and informatics teams interested in a design partnership or demonstration can reach the company at <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
+
+      <div class="article__boiler">
+        <div class="stack">
+          <h2>About Clinical Foresight AI, Inc.</h2>
+          <p>Clinical Foresight AI, Inc. is a physician-founded healthcare AI company based in Cherry Hill, New Jersey. It builds clinical decision support, patient-safety, and Clinical Documentation Integrity technology designed for the realities of the hospital floor. Learn more at <a href="index.html">clinicalforesight.ai</a>.</p>
+        </div>
+        <div class="stack">
+          <h2>About the NVIDIA Inception program</h2>
+          <p>NVIDIA Inception is a free program that guides AI startups through the NVIDIA platform and ecosystem. Open to AI startups at any stage, it offers members training, reduced-cost access to NVIDIA products, partner offers, and introductions to investors. Learn more at <a href="https://www.nvidia.com/en-us/startups/" target="_blank" rel="noopener">nvidia.com/startups</a>.</p>
+        </div>
+        <p class="nvidia-legal" style="margin-top:0">{NVIDIA_LEGAL}</p>
+      </div>
+
+      <div class="article__share">
+        <span class="mono">Share · #NVIDIAInception</span>
+        <div class="btn-row">
+          <a class="btn btn--ghost" href="https://www.linkedin.com/sharing/share-offsite/?url={SITE}/{NEWS_PAGE}" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn--ghost" href="https://x.com/intent/post?text=Clinical%20Foresight%20AI%2C%20Inc.%20joins%20the%20NVIDIA%20Inception%20program%20%23NVIDIAInception&amp;url={SITE}/{NEWS_PAGE}" target="_blank" rel="noopener">X</a>
+          <button class="btn btn--ghost" type="button" data-copy="{SITE}/{NEWS_PAGE}">Copy link</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section band">
+  <div class="container">
+    <div class="cta reveal">
+      <p class="eyebrow">Health systems · Technology partners · Investors</p>
+      <h2>Let's talk about what your organization could do with prospective CDI.</h2>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="contact.html">Explore a Partnership {ARROW}</a>
+        <a class="btn btn--ghost" href="contact.html#demo">Request a Demonstration</a>
+      </div>
+    </div>
+  </div>
+</section>
+"""
+
+
 PAGES = [
     ("index.html", "Clinical Foresight | Physician-Founded Clinical AI for Safety and CDI",
      "Physician-founded healthcare AI that identifies clinical risks, improves documentation at the point of care, and advances hospitals toward autonomous Clinical Documentation Integrity.", HOME, True),
@@ -903,6 +1028,8 @@ PAGES = [
      "The physician-founder story, clinical motivation, company mission, and long-term strategy behind Clinical Foresight.", ABOUT, True),
     ("contact.html", "Partnerships and Contact | Clinical Foresight",
      "Explore a partnership, request a demonstration, or start an investment conversation with Clinical Foresight.", CONTACT, True),
+    (NEWS_PAGE, "Clinical Foresight AI, Inc. Joins the NVIDIA Inception Program | Clinical Foresight",
+     "Clinical Foresight AI, Inc., a physician-founded healthcare AI company, has been accepted into the NVIDIA Inception program, supporting development of its AI Hospitalist and Autonomous CDI platforms.", NEWS_NVIDIA, True),
 ]
 
 for path, title, desc, body, dark in PAGES:

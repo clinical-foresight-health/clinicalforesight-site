@@ -360,6 +360,64 @@ strong { color: var(--ink); font-weight: 600; }
 .footer__legal { max-width: 72ch; font-size: 0.8rem; line-height: 1.55; color: rgba(255,255,255,0.5); margin-top: 18px; }
 @media (min-width: 900px) { .footer__grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; } .footer__brand { grid-column: auto; } }
 
+/* ---------- Announcement ribbon (NVIDIA Inception) ---------- */
+/* Sits above the sticky header; scrolls away. Dismiss state is kept in localStorage by main.js. */
+.announce { background: var(--teal); color: var(--ink-deep); font-size: 0.9rem; font-weight: 500; }
+.announce.is-dismissed { display: none; }
+.announce__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 18px; padding: 8px 0; }
+.announce__text { display: inline-flex; align-items: center; gap: 10px; text-align: center; }
+.announce__text::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--ink-deep); }
+.announce a { color: var(--ink-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.announce__close { width: 44px; height: 44px; margin: -8px -8px -8px 0; border: 0; background: transparent; color: var(--ink-deep); font-size: 1.4rem; line-height: 1; cursor: pointer; border-radius: 8px; }
+.announce__close:hover { background: rgba(6,17,31,0.1); }
+.announce:focus-within, .announce:focus { outline-color: var(--ink-deep); }
+@media (max-width: 640px) { .announce__text::before { display: none; } }
+
+/* ---------- Recognition band (NVIDIA Inception membership) ---------- */
+.recognition { display: grid; gap: clamp(32px, 5vw, 64px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); align-items: center; }
+.recognition > * { min-width: 0; }
+.recognition__badge { display: grid; gap: 16px; justify-items: start; }
+/* The badge always sits on its own white field with generous clear space (NVIDIA guidelines). */
+.badge-field { display: inline-block; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(18px, 3vw, 28px); }
+.badge-field img { width: 260px; max-width: 100%; height: auto; }
+@media (min-width: 900px) { .recognition { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); } }
+.recognition__points { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); margin-top: 8px; }
+.recognition__points > * { min-width: 0; }
+.recognition__points li { display: grid; gap: 6px; padding-top: 14px; border-top: 2px solid var(--teal); }
+.recognition__points strong { font-size: 0.95rem; }
+.recognition__points span { font-size: 0.9rem; line-height: 1.5; }
+.recognition__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 8px; }
+.recognition__actions .link { font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.recognition__actions .link:hover .arrow { transform: translateX(3px); }
+.recognition__actions .arrow { transition: transform .25s var(--ease); }
+.nvidia-legal { font-size: 0.78rem; line-height: 1.55; color: var(--mute); border-top: 1px solid var(--line); padding-top: 16px; margin-top: clamp(28px, 4vw, 48px); max-width: 80ch; }
+.band .nvidia-legal, .footer .nvidia-legal { color: rgba(255,255,255,0.5); border-top-color: var(--line-dark); }
+.footer .nvidia-legal { border-top: 0; padding-top: 0; margin-top: 14px; max-width: 72ch; }
+
+/* ---------- Announcement article ---------- */
+.article-hero__badge { display: inline-flex; align-items: center; gap: 16px; margin-top: 6px; }
+.article-hero__badge .badge-field { padding: 10px 12px; border: 0; border-radius: 10px; }
+.article-hero__badge .badge-field img { width: auto; height: 52px; }
+.article-hero__badge span { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+.article { max-width: 760px; margin-inline: auto; display: grid; gap: 26px; font-size: var(--step-0); line-height: 1.7; }
+.article p { font-size: 1.08rem; }
+.article h2 { font-size: var(--step-2); padding-top: 8px; }
+.article__dateline { color: var(--ink); font-weight: 600; }
+.article__quote { margin: 8px 0; padding: 26px 30px; border-left: 3px solid var(--teal); background: var(--mist); border-radius: 0 var(--radius) var(--radius) 0; display: grid; gap: 14px; }
+.article__quote p { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.35; color: var(--ink); font-weight: 500; }
+.article__quote cite { font-style: normal; font-size: 0.9rem; color: var(--mute); }
+.article__boiler { display: grid; gap: 22px; padding-top: 24px; border-top: 1px solid var(--line); }
+.article__boiler p { font-size: 1rem; }
+.article__share { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; padding-top: 22px; border-top: 1px solid var(--line); }
+.article__share .mono { color: var(--mute); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; }
+.article__share .btn-row .btn { padding: 10px 16px; font-size: 0.88rem; }
+
+/* ---------- Footer membership lockup ---------- */
+.footer__member { display: grid; gap: 10px; justify-items: start; }
+.footer__member .badge-field { padding: 8px 10px; border: 0; border-radius: 8px; }
+.footer__member .badge-field img { width: auto; height: 44px; }
+.footer__member .small { color: rgba(255,255,255,0.55); }
+
 /* ---------- Reveal motion ---------- */
 /* Content is visible at rest; JS only hides elements that start below the fold, then reveals them on scroll. */
 .reveal { opacity: 1; transform: none; }
