@@ -137,6 +137,18 @@
     });
   });
 
+  /* Announcement ribbon: dismiss and remember (per browser) */
+  var announce = document.getElementById("announce");
+  if (announce) {
+    var KEY = "cf-announce-nvidia-inception";
+    try { if (window.localStorage.getItem(KEY) === "1") announce.classList.add("is-dismissed"); } catch (err) {}
+    var close = announce.querySelector("[data-dismiss]");
+    if (close) close.addEventListener("click", function () {
+      announce.classList.add("is-dismissed");
+      try { window.localStorage.setItem(KEY, "1"); } catch (err) {}
+    });
+  }
+
   /* Footer year */
   var y = document.getElementById("year"); if (y) y.textContent = new Date().getFullYear();
 })();
