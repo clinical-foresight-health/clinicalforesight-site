@@ -176,6 +176,23 @@ strong { color: var(--ink); font-weight: 600; }
 .hero__meta li { display: inline-flex; align-items: center; gap: 8px; }
 .hero__meta li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--teal-light); }
 
+/* Hero membership card: anchored lower-right on wide screens, inline below the hero copy on narrow ones */
+.hero .container { position: relative; }
+.hero__badge { display: inline-flex; align-items: center; gap: 16px; padding: 12px 18px 12px 12px; margin-bottom: clamp(40px, 6vw, 72px); border: 1px solid var(--line-dark); border-radius: 14px; background: rgba(255,255,255,0.04); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: rgba(255,255,255,0.75); text-decoration: none; transition: border-color .3s var(--ease), background .3s var(--ease); }
+.hero__badge:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.07); }
+.hero__badge .badge-field { padding: 8px 10px; border: 0; border-radius: 8px; flex: none; }
+.hero__badge .badge-field img { width: auto; height: 48px; }
+.hero__badge-text { display: grid; gap: 2px; font-size: 0.85rem; }
+.hero__badge-text strong { color: #fff; font-size: 0.95rem; }
+.hero__badge-text span { display: inline-flex; align-items: center; gap: 6px; }
+.hero__badge-link { color: var(--teal-light); font-weight: 600; margin-top: 4px; }
+.hero__badge .arrow { transition: transform .25s var(--ease); }
+.hero__badge:hover .arrow { transform: translateX(3px); }
+@media (min-width: 1100px) {
+  .hero__badge { position: absolute; right: var(--gutter-r); top: clamp(72px, 10vw, 140px); margin-bottom: 0; flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; max-width: 300px; }
+  .hero__badge .badge-field img { height: 56px; }
+}
+
 /* Product-page hero (compact) */
 .page-hero { position: relative; overflow: hidden; }
 .page-hero__inner { padding-block: clamp(64px, 8vw, 110px) clamp(48px, 6vw, 80px); display: grid; gap: 22px; max-width: 820px; }
@@ -317,6 +334,10 @@ strong { color: var(--ink); font-weight: 600; }
 .founder__portrait::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,17,31,0.75), transparent 55%); }
 .founder__portrait .mono { z-index: 1; }
 .founder__portrait::before { content: "DF"; position: absolute; right: -6%; top: -4%; font-family: var(--font-display); font-style: italic; font-size: clamp(160px, 40vw, 300px); line-height: 1; color: rgba(255,255,255,0.05); pointer-events: none; }
+/* With a real photo: lighter caption scrim, no monogram */
+.founder__portrait:has(img)::after { background: linear-gradient(to top, rgba(6,17,31,0.7), transparent 32%); }
+.founder__portrait:has(img)::before { display: none; }
+.founder__portrait:has(img) .mono { color: rgba(255,255,255,0.9); }
 
 /* ---------- Status note ---------- */
 .status { display: grid; gap: 10px; padding: 22px 26px; border-radius: 14px; border: 1px solid var(--line); background: var(--mist); font-size: 0.93rem; }
