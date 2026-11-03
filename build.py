@@ -21,6 +21,7 @@ NAV = [
 # "NVIDIA Inception program" (lowercase p) in sentences; never abbreviated.
 NEWS_PAGE = "news-nvidia-inception.html"
 BADGE = '<img src="assets/nvidia-inception-badge.svg" alt="NVIDIA Inception Program member badge" width="500" height="216">'
+PORTRAIT = '<img src="assets/founder-daniel-francis.jpg" srcset="assets/founder-daniel-francis-600.jpg 600w, assets/founder-daniel-francis.jpg 1200w" sizes="(min-width: 900px) 420px, 100vw" width="1200" height="1500" alt="Dr. Daniel Francis, Physician-Founder of Clinical Foresight" loading="lazy" decoding="async">'
 NVIDIA_LEGAL = "&copy; 2026 NVIDIA, the NVIDIA logo, and NVIDIA Inception are trademarks and/or registered trademarks of NVIDIA Corporation in the U.S. and other countries."
 
 # Announcement ribbon shown above the header on every page; set ANNOUNCE = "" to retire it.
@@ -172,6 +173,14 @@ HOME = f"""
         <li>Physician remains in control</li>
       </ul>
     </div>
+    <a class="hero__badge reveal" href="{NEWS_PAGE}" aria-label="Clinical Foresight AI, Inc. is a member of the NVIDIA Inception program. Read the announcement.">
+      <span class="badge-field">{BADGE}</span>
+      <span class="hero__badge-text">
+        <strong>NVIDIA Inception program member</strong>
+        <span>Accepted November 2026</span>
+        <span class="hero__badge-link">Read the announcement {ARROW}</span>
+      </span>
+    </a>
   </div>
 </section>
 
@@ -396,7 +405,8 @@ HOME = f"""
 <section class="section">
   <div class="container">
     <div class="founder">
-      <div class="founder__portrait reveal" aria-hidden="true">
+      <div class="founder__portrait reveal">
+        {PORTRAIT}
         <span class="mono">Dr. Daniel Francis · Physician-Founder</span>
       </div>
       <div class="stack stack--lg reveal" data-delay="1">
@@ -798,7 +808,8 @@ ABOUT = f"""
 <section class="section" id="founder">
   <div class="container">
     <div class="founder">
-      <div class="founder__portrait reveal" aria-hidden="true">
+      <div class="founder__portrait reveal">
+        {PORTRAIT}
         <span class="mono">Dr. Daniel Francis · Physician-Founder</span>
       </div>
       <div class="stack stack--lg reveal" data-delay="1">
