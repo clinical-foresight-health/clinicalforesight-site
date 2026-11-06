@@ -51,6 +51,7 @@ DASH = '<svg viewBox="0 0 18 18" aria-hidden="true" fill="none"><path d="M4 9h10
 # site name shown above the result; the Organization block feeds brand/knowledge signals.
 # Add real profile URLs (LinkedIn company page, Crunchbase, etc.) to SAME_AS as they go live.
 SAME_AS = []
+FOUNDER_LINKEDIN = "https://www.linkedin.com/in/danfrancisdo"
 
 
 def schema(path):
@@ -66,7 +67,7 @@ def schema(path):
         "image": f"{SITE}/assets/og-image.png",
         "email": EMAIL,
         "description": "Physician-founded healthcare AI company developing clinical decision support, patient safety, and Clinical Documentation Integrity (CDI) automation for hospitals.",
-        "founder": {"@type": "Person", "name": "Daniel L. Francis, DO", "jobTitle": "Physician-Founder", "url": f"{SITE}/about.html#founder"},
+        "founder": {"@type": "Person", "name": "Daniel L. Francis, DO", "jobTitle": "Physician-Founder", "url": f"{SITE}/about.html#founder", "sameAs": [FOUNDER_LINKEDIN]},
         "knowsAbout": ["Clinical Documentation Integrity", "Clinical decision support", "Patient safety", "Hospital medicine", "SMART on FHIR"],
     }
     if SAME_AS:
@@ -863,6 +864,7 @@ ABOUT = f"""
         <p>The platform grew from a physician-developed AI Hospitalist workflow refined through daily clinical practice. Dr. Francis recognized that increasingly complex electronic medical records often contain clinically important findings that can be overlooked amid the demands of inpatient medicine, and his work demonstrated the practical value of incorporating advanced AI into everyday clinical reasoning, chart review, and documentation.</p>
         <p>Clinical Foresight is the effort to transform that physician-developed approach into an integrated hospital technology platform.</p>
         <p class="founder__quote">This is technology shaped by the realities of practicing medicine, not software designed around hospital administrative processes.</p>
+        <div class="btn-row"><a class="btn btn--ghost" href="{FOUNDER_LINKEDIN}" rel="me noopener" target="_blank">Dr. Francis on LinkedIn {ARROW}</a></div>
       </div>
     </div>
   </div>
