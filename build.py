@@ -47,6 +47,43 @@ CHECK = '<svg viewBox="0 0 18 18" aria-hidden="true" fill="none"><path d="M3.5 9
 DASH = '<svg viewBox="0 0 18 18" aria-hidden="true" fill="none"><path d="M4 9h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>'
 
 
+# Structured data. The WebSite block (home page only) is what Google uses to pick the
+# site name shown above the result; the Organization block feeds brand/knowledge signals.
+# Add real profile URLs (LinkedIn company page, Crunchbase, etc.) to SAME_AS as they go live.
+SAME_AS = []
+
+
+def schema(path):
+    import json
+    org = {
+        "@type": "Organization",
+        "@id": f"{SITE}/#organization",
+        "name": "Clinical Foresight AI",
+        "legalName": "Clinical Foresight AI, Inc.",
+        "alternateName": ["Clinical Foresight", "ClinicalForesight.ai"],
+        "url": f"{SITE}/",
+        "logo": {"@type": "ImageObject", "url": f"{SITE}/assets/logo-512.png", "width": 512, "height": 512},
+        "image": f"{SITE}/assets/og-image.png",
+        "email": EMAIL,
+        "description": "Physician-founded healthcare AI company developing clinical decision support, patient safety, and Clinical Documentation Integrity (CDI) automation for hospitals.",
+        "founder": {"@type": "Person", "name": "Daniel L. Francis, DO", "jobTitle": "Physician-Founder", "url": f"{SITE}/about.html#founder"},
+        "knowsAbout": ["Clinical Documentation Integrity", "Clinical decision support", "Patient safety", "Hospital medicine", "SMART on FHIR"],
+    }
+    if SAME_AS:
+        org["sameAs"] = SAME_AS
+    graph = [org]
+    if path == "index.html":
+        graph.append({
+            "@type": "WebSite",
+            "@id": f"{SITE}/#website",
+            "name": "Clinical Foresight AI",
+            "alternateName": ["Clinical Foresight", "clinicalforesight.ai"],
+            "url": f"{SITE}/",
+            "publisher": {"@id": f"{SITE}/#organization"},
+        })
+    return json.dumps({"@context": "https://schema.org", "@graph": graph}, separators=(",", ":")).replace("</", "<\\/")
+
+
 def head(title, desc, path, dark=False):
     return f"""<!doctype html>
 <html lang="en">
@@ -57,19 +94,26 @@ def head(title, desc, path, dark=False):
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{SITE}/{'' if path == 'index.html' else path}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Clinical Foresight">
+<meta property="og:site_name" content="Clinical Foresight AI">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{SITE}/{'' if path == 'index.html' else path}">
+<meta property="og:image" content="{SITE}/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Clinical Foresight AI: physician-founded clinical AI for patient safety and prospective CDI">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE}/assets/og-image.png">
 <meta name="theme-color" content="#0B1B33">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400;1,8..60,500&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/styles.css">
 <script type="application/ld+json">
-{{"@context":"https://schema.org","@type":"Organization","name":"Clinical Foresight","url":"{SITE}","email":"{EMAIL}","founder":{{"@type":"Person","name":"Daniel Francis","jobTitle":"Physician-Founder"}},"description":"Physician-founded healthcare AI company developing clinical decision support, patient safety, and Clinical Documentation Integrity (CDI) automation for hospitals."}}
+{schema(path)}
 </script>
 </head>
 <body>
@@ -161,7 +205,7 @@ HOME = f"""
     <div class="hero__inner">
       <p class="eyebrow">Physician-founded healthcare AI</p>
       <h1>What if the most important clinical finding was <em>the one no one noticed?</em></h1>
-      <p class="lede">Clinical Foresight helps physicians recognize what matters in complex medical records, before the next clinical decision or note is finalized. One platform for clinical safety, prospective Clinical Documentation Integrity, and a path toward autonomous CDI.</p>
+      <p class="lede">Clinical Foresight AI helps physicians recognize what matters in complex medical records, before the next clinical decision or note is finalized. One platform for clinical safety, prospective Clinical Documentation Integrity, and a path toward autonomous CDI.</p>
       <div class="btn-row">
         <a class="btn btn--primary" href="contact.html">Explore a Partnership {ARROW}</a>
         <a class="btn btn--ghost" href="contact.html#demo">Request a Demonstration</a>
@@ -1029,17 +1073,17 @@ NEWS_NVIDIA = f"""
 
 
 PAGES = [
-    ("index.html", "Clinical Foresight | Physician-Founded Clinical AI for Safety and CDI",
+    ("index.html", "Clinical Foresight AI | Physician-Founded Clinical AI for Safety and CDI",
      "Physician-founded healthcare AI that identifies clinical risks, improves documentation at the point of care, and advances hospitals toward autonomous Clinical Documentation Integrity.", HOME, True),
-    ("ai-hospitalist.html", "AI Hospitalist + Prospective CDI | Clinical Foresight",
+    ("ai-hospitalist.html", "AI Hospitalist + Prospective CDI | Clinical Foresight AI",
      "Clinical safety surveillance, decision support, and prospective CDI in one physician workflow: before rounds, after rounds, and before the note is signed.", HOSPITALIST, True),
-    ("autonomous-cdi.html", "Autonomous Retrospective CDI | Clinical Foresight",
+    ("autonomous-cdi.html", "Autonomous Retrospective CDI | Clinical Foresight AI",
      "From manual chart review to intelligent CDI automation: a three-phase path from reviewer-assisted review to automated queries, coding support, and revenue-cycle workflows.", CDI, True),
-    ("about.html", "Our Vision | Clinical Foresight",
+    ("about.html", "Our Vision | Clinical Foresight AI",
      "The physician-founder story, clinical motivation, company mission, and long-term strategy behind Clinical Foresight.", ABOUT, True),
-    ("contact.html", "Partnerships and Contact | Clinical Foresight",
+    ("contact.html", "Partnerships and Contact | Clinical Foresight AI",
      "Explore a partnership, request a demonstration, or start an investment conversation with Clinical Foresight.", CONTACT, True),
-    (NEWS_PAGE, "Clinical Foresight AI, Inc. Joins the NVIDIA Inception Program | Clinical Foresight",
+    (NEWS_PAGE, "Clinical Foresight AI, Inc. Joins the NVIDIA Inception Program",
      "Clinical Foresight AI, Inc., a physician-founded healthcare AI company, has been accepted into the NVIDIA Inception program, supporting development of its AI Hospitalist and Autonomous CDI platforms.", NEWS_NVIDIA, True),
 ]
 
