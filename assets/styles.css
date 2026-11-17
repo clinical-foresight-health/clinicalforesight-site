@@ -362,6 +362,7 @@ strong { color: var(--ink); font-weight: 600; }
 .form__note { font-size: 0.85rem; color: var(--mute); }
 .contact-aside { display: grid; gap: 22px; align-content: start; }
 .contact-aside .email { font-family: var(--font-mono); font-size: 1rem; word-break: break-all; }
+.contact-aside .phone { font-family: var(--font-mono); font-size: 1rem; white-space: nowrap; }
 .contact-list { display: grid; gap: 10px; }
 .contact-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; }
 .contact-list li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: 10px; border-radius: 50%; background: var(--teal); }
