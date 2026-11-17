@@ -7,6 +7,9 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 SITE = "https://www.clinicalforesight.ai"
 EMAIL = "DrFrancis@clinicalforesight.ai"
+# Business line. PHONE is what visitors read; PHONE_TEL is the E.164 form used in tel: links and schema.
+PHONE = "(856) 242-7621"
+PHONE_TEL = "+18562427621"
 
 NAV = [
     ("index.html", "Home"),
@@ -66,6 +69,7 @@ def schema(path):
         "logo": {"@type": "ImageObject", "url": f"{SITE}/assets/logo-512.png", "width": 512, "height": 512},
         "image": f"{SITE}/assets/og-image.png",
         "email": EMAIL,
+        "telephone": PHONE_TEL,
         "description": "Physician-founded healthcare AI company developing clinical decision support, patient safety, and Clinical Documentation Integrity (CDI) automation for hospitals.",
         "founder": {"@type": "Person", "name": "Daniel L. Francis, DO", "jobTitle": "Physician-Founder", "url": f"{SITE}/about.html#founder", "sameAs": [FOUNDER_LINKEDIN]},
         "knowsAbout": ["Clinical Documentation Integrity", "Clinical decision support", "Patient safety", "Hospital medicine", "SMART on FHIR"],
@@ -175,6 +179,7 @@ FOOTER = f"""</main>
         <h4>Contact</h4>
         <ul>
           <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
+          <li><a href="tel:{PHONE_TEL}">{PHONE}</a></li>
           <li><a href="contact.html#demo">Request a demonstration</a></li>
           <li><a href="contact.html#investors">Investor inquiries</a></li>
         </ul>
@@ -978,7 +983,8 @@ CONTACT = f"""
           <h3>Dr. Daniel Francis</h3>
           <p class="small">Physician-Founder</p>
           <p class="email"><a href="mailto:{EMAIL}">{EMAIL}</a></p>
-          <div><button class="btn btn--ghost" type="button" data-copy="{EMAIL}">Copy address</button></div>
+          <p class="phone"><a href="tel:{PHONE_TEL}">{PHONE}</a></p>
+          <div><button class="btn btn--ghost" type="button" data-copy="{EMAIL}">Copy email</button></div>
         </div>
         <div class="stack" id="demo">
           <p class="eyebrow">Discussion topics</p>
